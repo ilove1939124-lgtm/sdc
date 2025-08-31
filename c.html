@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>服务／合作方案｜马的小教室</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --card: #12161c;
+            --text: #e7e7e7;
+            --muted: #9aa3ab;
+            --accent: #39ff14;
+            --ring: #39ff1426;
+            --border: #1e222a;
+            --radius: 16px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans CJK", sans-serif
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(12px, 2vw, 24px)
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #0b0d10cc;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(6px)
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 8px 0
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 1px solid var(--border)
+        }
+
+        .nav a:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--ring)
+        }
+
+        .nav a.active {
+            background: var(--accent);
+            color: #0b0d10
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: var(--accent);
+            font-size: clamp(26px, 4.5vw, 42px);
+            text-shadow: 0 0 8px var(--accent)
+        }
+
+        .plans {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1fr;
+            margin: 18px 0
+        }
+
+        @media(min-width:900px) {
+            .plans {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(16px, 2vw, 24px)
+        }
+
+        .price {
+            font-size: clamp(28px, 5vw, 40px);
+            margin: 4px 0 0 0;
+            color: #fff
+        }
+
+        .sub {
+            color: var(--muted);
+            margin: 6px 0 0 0
+        }
+
+        ul {
+            margin: 12px 0 0 18px;
+            color: var(--text)
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            color: #0b0d10;
+            background: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 0 5px var(--ring)
+        }
+
+        .note {
+            color: var(--muted);
+            margin-top: 12px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <h1>服务／合作方案</h1>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="a.html">关于我们</a>
+                <a href="b.html">作品展示</a>
+                <a href="c.html">服务/合作方案</a>
+                <a href="d.html">知识分享/部落格</a>
+                <a href="e.html">联络我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="plans">
+            <section class="card">
+                <h2 class="sr-only">月方案</h2>
+                <div class="price">一个月 100</div>
+                <p class="sub">适合短期尝试或阶段性训练</p>
+                <ul>
+                    <li>基础课程与文章完整访问</li>
+                    <li>社群与讨论区参与</li>
+                    <li>电子信件支持</li>
+                </ul>
+                <a class="btn" href="#">立即订阅（示意）</a>
+            </section>
+            <section class="card">
+                <h2 class="sr-only">年方案</h2>
+                <div class="price">一年 1000</div>
+                <p class="sub">长期学习更划算</p>
+                <ul>
+                    <li>全站内容 + 新课优先体验</li>
+                    <li>不定期线上工作坊</li>
+                    <li>专属电子信件支持</li>
+                </ul>
+                <a class="btn" href="#">立即订阅（示意）</a>
+            </section>
+        </div>
+        <p class="note">以上价格与功能为范例文案；真实支付流程尚未接上后端。</p>
+    </main>
+
+    <script>
+        (function () {
+            const path = (location.pathname.split("/").pop() || "c.html").toLowerCase();
+            document.querySelectorAll("nav a").forEach(a => {
+                if (a.getAttribute("href").toLowerCase() === path) a.classList.add("active");
+            });
+        })();
+    </script>
+</body>
+
+</html>

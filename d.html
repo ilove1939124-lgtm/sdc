@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>知识分享／部落格｜马的小教室</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --card: #12161c;
+            --text: #e7e7e7;
+            --muted: #9aa3ab;
+            --accent: #39ff14;
+            --ring: #39ff1426;
+            --border: #1e222a;
+            --radius: 16px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans CJK", sans-serif
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(12px, 2vw, 24px)
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #0b0d10cc;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(6px)
+        }
+
+        .bar {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 8px 0
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 1px solid var(--border)
+        }
+
+        .nav a:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--ring)
+        }
+
+        .nav a.active {
+            background: var(--accent);
+            color: #0b0d10
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: var(--accent);
+            font-size: clamp(26px, 4.5vw, 42px);
+            text-shadow: 0 0 8px var(--accent)
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #0b0d10;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 0 5px var(--ring)
+        }
+
+        .feed {
+            display: grid;
+            gap: 14px;
+            margin: 18px 0
+        }
+
+        .post {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+            white-space: pre-wrap
+        }
+
+        .empty {
+            color: var(--muted);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center
+        }
+
+        dialog {
+            border: none;
+            border-radius: 16px;
+            padding: 0;
+            max-width: min(680px, 92vw);
+            width: 100%
+        }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, .6)
+        }
+
+        .dlg {
+            background: #12161c;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            background: #0f141a;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px;
+            font: inherit
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 10px
+        }
+
+        .ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px 12px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <div class="bar">
+                <h1>知识分享／部落格</h1>
+                <button id="open" class="btn">分享你的学习方式</button>
+            </div>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="a.html">关于我们</a>
+                <a href="b.html">作品展示</a>
+                <a href="c.html">服务/合作方案</a>
+                <a href="d.html">知识分享/部落格</a>
+                <a href="e.html">联络我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div id="feed" class="feed">
+            <div id="empty" class="empty">（目前尚无人分享，欢迎成为第一位！）</div>
+        </div>
+    </main>
+
+    <dialog id="dlg">
+        <form method="dialog" class="dlg" id="form">
+            <h2 style="margin:0 0 8px;color:var(--accent);text-shadow:0 0 6px var(--accent)">写下你的学习方式</h2>
+            <textarea id="txt" placeholder="举例：如何安排每日学习、你最有效的方法、用过哪些工具……"></textarea>
+            <div class="row">
+                <button class="ghost" value="cancel">取消</button>
+                <button class="btn" value="ok">发布</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script>
+        (function () {
+            const path = (location.pathname.split("/").pop() || "d.html").toLowerCase();
+            document.querySelectorAll("nav a").forEach(a => {
+                if (a.getAttribute("href").toLowerCase() === path) a.classList.add("active");
+            });
+            const dlg = document.getElementById("dlg");
+            const openBtn = document.getElementById("open");
+            const feed = document.getElementById("feed");
+            const empty = document.getElementById("empty");
+            openBtn.addEventListener("click", () => dlg.showModal());
+            dlg.addEventListener("close", () => {
+                if (dlg.returnValue !== "ok") return;
+                const v = document.getElementById("txt").value.trim();
+                if (!v) return;
+                const post = document.createElement("article");
+                post.className = "post";
+                post.textContent = v;
+                if (empty) { empty.remove(); }
+                feed.prepend(post);
+                document.getElementById("txt").value = "";
+            });
+        })();
+    </script>
+</body>
+
+</html>

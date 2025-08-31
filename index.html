@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>马的小教室｜首页</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --card: #12161c;
+            --text: #e7e7e7;
+            --muted: #9aa3ab;
+            --accent: #39ff14;
+            /* 萤光绿 */
+            --ring: #39ff1426;
+            --border: #1e222a;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans CJK", sans-serif;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(12px, 2vw, 24px)
+        }
+
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: linear-gradient(180deg, #0b0d10, rgba(11, 13, 16, 0.85));
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: saturate(120%) blur(6px);
+        }
+
+        .brand {
+            margin: 0 0 8px 0;
+            font-size: clamp(28px, 4.8vw, 48px);
+            color: var(--accent);
+            letter-spacing: .5px;
+            text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+        }
+
+        nav.nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 6px 0 10px;
+        }
+
+        nav.nav a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        nav.nav a:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--ring)
+        }
+
+        nav.nav a.active {
+            background: var(--accent);
+            color: #0b0d10
+        }
+
+        /* 横幅主视觉（首页） */
+        .hero {
+            padding: clamp(20px, 4vw, 40px) 0 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin: 8px 0 0 0
+        }
+
+        /* 占位“屏” */
+        .grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: 1fr;
+            margin: clamp(16px, 2.2vw, 24px) 0;
+        }
+
+        @media (min-width:640px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (min-width:960px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        .block {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+
+        .label {
+            font-weight: 600;
+            letter-spacing: .3px;
+            mix-blend-mode: screen;
+            opacity: .95
+        }
+
+        /* 彩色屏（仅占位） */
+        .c1 {
+            background: linear-gradient(135deg, #2a62ff, #4bd1ff)
+        }
+
+        .c2 {
+            background: linear-gradient(135deg, #ff7b2a, #ffd84b)
+        }
+
+        .c3 {
+            background: linear-gradient(135deg, #b42aff, #ff4be1)
+        }
+
+        .c4 {
+            background: linear-gradient(135deg, #39ff14, #13c6a8)
+        }
+
+        .c5 {
+            background: linear-gradient(135deg, #ff2a5b, #ff8ab6)
+        }
+
+        .c6 {
+            background: linear-gradient(135deg, #34d399, #a7f3d0)
+        }
+
+        .foot {
+            color: var(--muted);
+            font-size: 14px;
+            padding: 24px 0 40px;
+            border-top: 1px solid var(--border)
+        }
+
+        .h1-neon {
+            color: var(--accent);
+            text-shadow: 0 0 8px var(--accent)
+        }
+
+        .sr-only {
+            position: absolute;
+            left: -9999px
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site">
+        <div class="wrap">
+            <h1 class="brand">马的小教室</h1>
+            <nav class="nav">
+                <a href="a.html">关于我们</a>
+                <a href="b.html">作品展示</a>
+                <a href="c.html">服务/合作方案</a>
+                <a href="d.html">知识分享/部落格</a>
+                <a href="e.html">联络我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <h2 class="h1-neon" style="margin:0">欢迎来到「马的小教室」</h2>
+            <p>从 0 到 1 的学习小基地：项目实作、知识分享、合作服务都在这里。</p>
+        </section>
+
+        <h3 style="margin:18px 0 10px">精选影片 / 图片</h3>
+        <div class="grid">
+            <div class="block c1">
+                <div class="label">视频占位</div>
+            </div>
+            <div class="block c2">
+                <div class="label">视频占位</div>
+            </div>
+            <div class="block c3">
+                <div class="label">图片占位</div>
+            </div>
+            <div class="block c4">
+                <div class="label">图片占位</div>
+            </div>
+            <div class="block c5">
+                <div class="label">图片占位</div>
+            </div>
+            <div class="block c6">
+                <div class="label">图片占位</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 导航高亮
+        (function () {
+            const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+            document.querySelectorAll("nav a").forEach(a => {
+                if (a.getAttribute("href").toLowerCase() === path) a.classList.add("active");
+            });
+            // 年份
+            const y = document.getElementById("y"); if (y) y.textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>关于我们｜马的小教室</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --card: #12161c;
+            --text: #e7e7e7;
+            --muted: #9aa3ab;
+            --accent: #39ff14;
+            --ring: #39ff1426;
+            --border: #1e222a;
+            --radius: 16px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans CJK", sans-serif
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(12px, 2vw, 24px)
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #0b0d10cc;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(6px)
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 8px 0
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 1px solid var(--border)
+        }
+
+        .nav a:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--ring)
+        }
+
+        .nav a.active {
+            background: var(--accent);
+            color: #0b0d10
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: var(--accent);
+            font-size: clamp(26px, 4.5vw, 42px);
+            text-shadow: 0 0 8px var(--accent)
+        }
+
+        .grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: 1fr;
+            margin: 16px 0
+        }
+
+        @media(min-width:640px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(min-width:960px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        .block {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .c1 {
+            background: linear-gradient(135deg, #39ff14, #13c6a8)
+        }
+
+        .c2 {
+            background: linear-gradient(135deg, #2a62ff, #4bd1ff)
+        }
+
+        .c3 {
+            background: linear-gradient(135deg, #ff7b2a, #ffd84b)
+        }
+
+        .c4 {
+            background: linear-gradient(135deg, #b42aff, #ff4be1)
+        }
+
+        .c5 {
+            background: linear-gradient(135deg, #34d399, #a7f3d0)
+        }
+
+        .c6 {
+            background: linear-gradient(135deg, #ff2a5b, #ff8ab6)
+        }
+
+        .p {
+            color: var(--muted);
+            max-width: 70ch
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <h1>关于我们</h1>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="a.html">关于我们</a>
+                <a href="b.html">作品展示</a>
+                <a href="c.html">服务/合作方案</a>
+                <a href="d.html">知识分享/部落格</a>
+                <a href="e.html">联络我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <p class="p">我们致力于帮助一些不动学习的人学习，让大家可以得到自己想要的。</p>
+
+        <div class="grid" aria-label="图片占位">
+            <div class="block c1"></div>
+            <div class="block c2"></div>
+            <div class="block c3"></div>
+            <div class="block c4"></div>
+            <div class="block c5"></div>
+            <div class="block c6"></div>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            const path = (location.pathname.split("/").pop() || "a.html").toLowerCase();
+            document.querySelectorAll("nav a").forEach(a => {
+                if (a.getAttribute("href").toLowerCase() === path) a.classList.add("active");
+            });
+        })();
+    </script>
+</body>
+
+</html>

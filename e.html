@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>联络我们｜马的小教室</title>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --card: #12161c;
+            --text: #e7e7e7;
+            --muted: #9aa3ab;
+            --accent: #39ff14;
+            --ring: #39ff1426;
+            --border: #1e222a;
+            --radius: 16px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans CJK", sans-serif
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(12px, 2vw, 24px)
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #0b0d10cc;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(6px)
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 8px 0
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 1px solid var(--border)
+        }
+
+        .nav a:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--ring)
+        }
+
+        .nav a.active {
+            background: var(--accent);
+            color: #0b0d10
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: var(--accent);
+            font-size: clamp(26px, 4.5vw, 42px);
+            text-shadow: 0 0 8px var(--accent)
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: 1fr;
+            margin: 12px 0
+        }
+
+        @media(min-width:900px) {
+            .grid {
+                grid-template-columns: 1.1fr .9fr
+            }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(14px, 2vw, 20px)
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 4px
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #0f141a;
+            color: var(--text);
+            font: inherit
+        }
+
+        textarea {
+            min-height: 160px
+        }
+
+        .btn {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #0b0d10;
+            font-weight: 600;
+            box-shadow: 0 0 0 5px var(--ring)
+        }
+
+        .map {
+            aspect-ratio: 16/10;
+            border-radius: var(--radius);
+            border: 1px dashed var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted)
+        }
+
+        .links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent)
+        }
+
+        .ok {
+            margin-top: 10px;
+            color: #b6f5c5
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <h1>联络我们</h1>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="a.html">关于我们</a>
+                <a href="b.html">作品展示</a>
+                <a href="c.html">服务/合作方案</a>
+                <a href="d.html">知识分享/部落格</a>
+                <a href="e.html">联络我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="grid">
+            <section class="card">
+                <h2 style="margin:0 0 10px">表单送信</h2>
+                <form id="contact">
+                    <label for="name">姓名</label>
+                    <input id="name" name="name" required placeholder="你的姓名" />
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required placeholder="your@email.com" />
+                    <label for="msg">讯息</label>
+                    <textarea id="msg" name="msg" required placeholder="想告诉我们什么？"></textarea>
+                    <button class="btn" type="submit">送出</button>
+                    <div id="ok" class="ok" hidden>已送出（示意）。此表单尚未接后端。</div>
+                </form>
+            </section>
+
+            <aside class="card">
+                <h2 style="margin:0 0 10px">地址 / 地图</h2>
+                <div class="map">Google Map 占位（可嵌入或改成地址文字）</div>
+                <h3 style="margin:14px 0 6px">社群连结</h3>
+                <p class="links">
+                    <a href="#" aria-label="YouTube">YouTube</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </p>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            const path = (location.pathname.split("/").pop() || "e.html").toLowerCase();
+            document.querySelectorAll("nav a").forEach(a => {
+                if (a.getAttribute("href").toLowerCase() === path) a.classList.add("active");
+            });
+            const form = document.getElementById("contact");
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                document.getElementById("ok").hidden = false;
+                form.reset();
+            });
+        })();
+    </script>
+</body>
+
+</html>
